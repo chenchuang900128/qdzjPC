@@ -1,7 +1,7 @@
 # fastice-site
 
 #### Description
-坚冰官网
+前端组件开发
 
 #### Software Architecture
 Software architecture description

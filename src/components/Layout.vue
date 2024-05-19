@@ -9,7 +9,7 @@
                 </div>
                 <div style="display:flex; float:left; height: 65px;">
                     <div class="header-important">
-                        <div class="company_name">坚冰信息科技</div>
+                        <div class="company_name">前端组件开发</div>
                         <div class="header-title company_name">fastice-tech.com</div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                 </el-col>
                 <el-col :xs="24" :sm="12">
                     <div><img :src="company.qrcode" style="width: 100px;height: 100px;border: 0"/></div>
-                    <div class="footer_font">关注坚冰商务公众号</div>
+                    <div class="footer_font">关注前端组件开发公众号</div>
                 </el-col>
             </el-row>
         </div>
