@@ -10,7 +10,7 @@
                 <div style="display:flex; float:left; height: 65px;">
                     <div class="header-important">
                         <div class="company_name">前端组件开发</div>
-                        <div class="header-title company_name">fastice-tech.com</div>
+                        <div class="header-title company_name">qdzjkf.com</div>
                     </div>
                 </div>
             </div>
@@ -21,12 +21,12 @@
                     <el-submenu index="2">
                         <template slot="title">产品与解决方案</template>
                         <el-menu-item index="2-1">产品微观</el-menu-item>
-                        <el-menu-item index="2-2">生鲜果蔬</el-menu-item>
+                        <!-- <el-menu-item index="2-2">生鲜果蔬</el-menu-item>
                         <el-menu-item index="2-3" disabled>服装品牌</el-menu-item>
-                        <el-menu-item index="2-4" disabled>微商城小程序</el-menu-item>
+                        <el-menu-item index="2-4" disabled>微商城小程序</el-menu-item> -->
                     </el-submenu>
                     <el-menu-item index="3" class="header-title">产品特点</el-menu-item>
-                    <el-menu-item index="4" class="header-title">合作伙伴</el-menu-item>
+                    <el-menu-item index="4" class="header-title">官方小程序</el-menu-item>
                     <el-menu-item index="5" class="header-title">关于我们</el-menu-item>
                 </el-menu>
                 <!-- 手机端菜单导航 v-bind:style="{backgroundColor:'#409EFF'}" -->
@@ -37,7 +37,7 @@
                         <el-menu-item index="2-2" class="header-title">生鲜果蔬</el-menu-item>
                         <el-menu-item index="2-1" class="header-title">产品微观</el-menu-item>
                         <el-menu-item index="3" class="header-title">产品特点</el-menu-item>
-                        <el-menu-item index="4" class="header-title">合作伙伴</el-menu-item>
+                        <el-menu-item index="4" class="header-title">官方小程序</el-menu-item>
                         <el-menu-item index="5" class="header-title">关于我们</el-menu-item>
                     </el-submenu>
                 </el-menu>
@@ -57,18 +57,32 @@
         </div>
         <div style="width: 90%;margin: 20px auto;">
             <el-row :gutter="20">
-                <el-col :xs="24" :sm="12">
-                    <p class="footer_font">邮箱：jb_technology@163.com</p>
+                <el-col :xs="24" :sm="18">
+					<div style="margin-left: -56%;">
+                    <p class="footer_font">邮箱：2819971691@@qq.com</p>
                     <div style="margin: auto;" class="footer_font">
-                        互联网ICP备案：鄂ICP备19029919号-1
+                        互联网ICP备案：粤ICP备2024215752号
                     </div>
-                    <div style="margin: auto;" class="footer_font">
-                        ©fastice-tech.com 襄阳坚冰信息科技有限公司版权所有
+                    <div style="margin: auto;margin-top: 6px;" class="footer_font">
+                        ©qdzjkf.com所有
                     </div>
+					</div>
                 </el-col>
-                <el-col :xs="24" :sm="12">
-                    <div><img :src="company.qrcode" style="width: 100px;height: 100px;border: 0"/></div>
-                    <div class="footer_font">关注前端组件开发公众号</div>
+                <el-col :xs="24" :sm="6">
+					<div style="display: flex; justify-self: right;">
+						
+						<div><img :src="company.qrcode" style="width: 100px;height: 100px;border: 0"/>
+						<div class="footer_font" style="padding-left: 0px;">关注公众号</div>
+						
+						</div>
+						
+						<div style="margin-left: 60px;">
+							<img :src="company.wxcode" style="width: 100px;height: 100px;border: 0"/>
+						<div class="footer_font" style="padding-left: 0px;">{{"联系我们"}}</div>
+						
+						</div>
+					</div>
+                    
                 </el-col>
             </el-row>
         </div>
@@ -87,6 +101,8 @@
                 activeIndex: '1',
                 company:{
                     qrcode: require("../../static/other/公众号二维码.jpg"),
+					wxcode: require("../../static/other/微信二维码.jpg"),
+					
                 },
                 scroll: '',
                 timer: '',
@@ -115,7 +131,7 @@
                         break;
                     case '4':
                         this.$router.push({name: "Index"});
-                        window.location.hash = "#合作伙伴";
+                        window.location.hash = "#官方小程序";
                         break;
                     case '5':
                         this.$router.push({name: "Index"});
@@ -148,7 +164,7 @@
                         break;
                     case '4':
                         this.$router.push({name: "Index"});
-                        window.location.hash = "#合作伙伴";
+                        window.location.hash = "#官方小程序";
                         this.currentMenu='首页';
                         break;
                     case '5':
@@ -177,10 +193,10 @@
                 }, 30)
             },
             login(){
-                window.open('https://admin.fastice-tech.com/login')
+                window.open('https://admin.qdzjkf.com/login')
             },
             register(){
-                window.open('https://admin.fastice-tech.com/registe')
+                window.open('https://admin.qdzjkf.com/registe')
             },
             menuSeen(){
                 // 屏幕尺寸
@@ -224,6 +240,7 @@
     }
     .footer_font{
         font-size: 1em;
+		text-align: center;
     }
     #menu_index{
         float: left; width: 50%;height: 100%

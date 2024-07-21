@@ -2,11 +2,11 @@
     <div>
         <el-carousel :height="computeHeight">
             <el-carousel-item v-for="(item, index) in sliders" :key="index">
-                <img :src="item.img" class="slider_img">
+                <img  :src="item.img" class="slider_img">
             </el-carousel-item>
         </el-carousel>
         <div class="solve head-label">
-            <div style="text-align: center;" class="font_size_24">
+            <div style="text-align: center; padding-top: 20px !important;" class="font_size_24">
                 一站式解决方案
             </div>
         </div>
@@ -68,7 +68,7 @@
                         <div style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;display: flex;
                         justify-content: center;align-items: center;flex-direction: column;">
                             <div class="product_mobile_title font_size_30">{{products[0].title}}</div>
-                            <div class="product_font_style product_mobile_content_one" v-for="(content, index) in products[0].content" :key="index">{{content}}</div>
+                            <div class="product_font_style product_mobile_content_one" style="width: 80%; margin-top: 20px !important; color:#333" v-for="(content, index) in products[0].content" :key="index">{{content}}</div>
                         </div>
                     </div>
                 </el-col>
@@ -183,16 +183,18 @@
                 </div>
             </div>
         </div>
-        <!-- 合作伙伴-->
-        <div id="合作伙伴" class="cooperation head-label">
+        <!-- 官方小程序-->
+        <div id="官方小程序" class="cooperation head-label">
             <div style="text-align: center;" class="font_size_24">
-                合作伙伴
+                官方小程序
             </div>
         </div>
         <div class="cooperation_parent">
             <div style="width: auto; height: auto; margin: auto">
                 <img style="height: 160px;width: 160px;" src="../../static/other/partner_01.jpg"/>
                 <img style="height: 160px;width: 160px;margin-left: 30px;" src="../../static/other/partner_02.jpg"/>
+				<img style="height: 160px;width: 160px;margin-left: 30px;" src="../../static/other/partner_03.jpg"/>
+				<img style="height: 160px;width: 160px;margin-left: 30px;" src="../../static/other/partner_04.jpg"/>
             </div>
         </div>
         <!-- 关于我们-->
@@ -226,22 +228,22 @@
                     },
                     {
                         img: require('../../static/other/店铺管理.png'),
-                        title: "店铺管理",
-                        content: ["店铺模板切换", "店铺商品上架"]
+                        title: "前端组件",
+                        content: ["丰富多样组件", "提高代码可维护性"]
                     },
                     {
                         img: require('../../static/other/数据分析.png'),
-                        title: "数据分析",
-                        content: ["交易量直观分析", "经营效果智能分析"]
-                    }, {
-                        img: require('../../static/other/用户构建.png'),
-                        title: "用户互动",
-                        content: ["营销活动通知", "用户粘连度提升"]
+                        title: "前端模版",
+                        content: ["大量行业模版", "提升前端开发效率"]
                     },
                     {
                         img: require('../../static/other/品牌渠道.png'),
-                        title: "品牌渠道",
-                        content: ["打造店铺自主品牌", "品牌多样化管理"]
+                        title: "产品定制",
+                        content: ["深蕴定制经验", "满足客户个性化需求"]
+                    }, {
+                        img: require('../../static/other/用户构建.png'),
+                        title: "Sass产品",
+                        content: ["众多合作产品", "助力企业高质量发展"]
                     }
                 ],
                 products: [
@@ -254,29 +256,25 @@
                             {
                                 left: require('../../static/other/3.jpg'), 
                                 right: require('../../static/other/4.jpg'), 
-                            },
-                            {
-                                left: require('../../static/other/5.jpg'), 
-                                right: require('../../static/other/6.jpg'), 
                             }
                         ],
-                        title: "手机端商品展示，强大的商品规格设计",
+                        title: "丰富多样前端组件，大量行业前后端模版",
                         content: [
-                            "商品热销分类显，分类导航显示所有分类", 
-                            "热销商品优先排序 商城首页轮播自定义",
-                            "单品、多规格、加料、属性、多价格展示",
-                            "商品分类列表支持虚拟列表，滚动众享丝滑",
-                            "无需注册会员，商品在线购买支付"
+                            "我们为您带来丰富多样的前端组件，宛如一座宝库，满足您的各种需求。还有大量行业前端模版，如同精心绘制的蓝图，为您的项目奠定坚实基础。无论您是在构建创新的网站，还是开发独特的应用，我们的资源都将成为您的得力助手，助您在数字世界中脱颖而出。", 
+                            "",
+                           
                         ]
                     }
                 ],
                 manages: [
                     {
                         img: [require('../../static/other/product_info.jpg')],
-                        title: "小程序+公众号一体化微信商城管理平台",
-                        content: ["公众号菜单自定义发布 微信图文图片素材管理", "商品多规格SKU自定义上架 分类自定义设置",
-                            "用户管理 用户自定义标签，了解用户消费行为",
-                            "订单管理 实时掌握商品交易详情", "物流闪电发货 实时掌握物流追踪状态",
+                        title: "DIYGW UniApp可视化开发平台",
+                        content: ["拖拽式界面设计，一键生成代码",
+                            "丰富的组件模板，接口数据绑定",
+                            "路由自动生成与配置，项目代码导出与运行",
+							 
+
                         ]
                     }
                 ],
@@ -285,30 +283,30 @@
                     product: [
                         {
                             img: require('../../static/other/手指.png'),
-                            title: "一键建铺",
-                            contents: ["注册一键创建店铺", "开启您的专属店铺"]
+                            title: "前端组件",
+                            contents: ["提高开发效率", "易于维护和更新"]
                         },
                         {
                             img: require('../../static/other/店铺管理.png'),
-                            title: "店铺装扮",
-                            contents: ["不同业态打造不同风格", "给用户流畅的视觉体验"]
+                            title: "前端模版",
+                            contents: ["保持风格一致", "快速搭建页面结构"]
                         },
                         {
                             img: require('../../static/other/数据分析.png'),
-                            title: "营销分析",
-                            contents: ["多玩法提升品牌知名度", "优惠福利刺激付费转化"]
+                            title: "产品定制",
+                            contents: ["满足个性化需求", "提升市场竞争力"]
                         },
                         {
                             img: require('../../static/other/助力零售.png'),
-                            title: "助力零售",
-                            contents: ["提供专业产品服务", "帮助线下零售业态提升营销"]
+                            title: "Sass产品",
+                            contents: ["降低开发成本", "提升效益"]
                         }
                     ]
                 },
                 company: [
-                    "企业从事于：互联网整合营销，互联网软件开发，微信公众号，小程序，微商城开发，提供技术支持，是所创业型服务研发公司。",
-                    "核心理念：打造移动电子商务平台 ，提供一键式部署，实现简单可靠稳定的商务平台。",
-                    "团队作风：我们来自不同地区，因梦想相聚，组建团队，每个团队成员如同人的五官，缺一不可。",
+                    "企业从事于：前端组件开发、模板开发以及产品定制开发，推动互联网产品营销实现产品化和商业化，并给予技术支持，助力个人和企业发展。",
+                    "核心理念：构建五者融合的软件行业新生态，包括前端组件开发、模板开发、产品定制开发、Sass 产品销售及互联网项目产品化商业化。",
+                    "团队作风：我们来自不同地域，因梦想而相聚，进而组建团队。每个团队伙伴携手同行，皆是不可或缺。",
                     "企业精神：以实力为盾，自信为矛。我们坚信成功靠朋友，成长靠对手，成就靠团体。",
                 ],
                 carousel_height: '550px',
@@ -322,13 +320,8 @@
                 },
                 {
                     img: require("../../static/slider/a2.jpg")
-                },
-                {
-                    img: require('../../static/slider/a3.jpg')
-                },
-                {
-                    img: require('../../static/slider/a4.jpg')
                 }
+                
             ]
         },
         computed: {
@@ -361,8 +354,8 @@
     }
 
     .slider_img {
-        height: 550px;
-        width: 100%;
+        height: 44vw;
+        width: 100vw;
     }
 
     .solve {
@@ -419,7 +412,7 @@
     }
 
     .product_font_style {
-        font-size: 1.125em;
+        font-size: 1.085em;
     }
 
     .product_pc_img {
@@ -473,10 +466,11 @@
     }
 
     .about_me_p {
-        font-size: 1.25em;
+        font-size: 1.05em;
         font-weight: normal;
         padding: 0 20px;
         margin: 10px;
+		color: #333;
     }
 
     .border_title {
@@ -554,8 +548,10 @@
     }
 
     .product_mobile_content_one {
-        margin-top: 20px;
+        margin-top: 28px;
         text-align: center;
+		height: 36px;
+		line-height: 36px;
     }
 
     .product_mobile_content_two {
@@ -671,7 +667,7 @@
 
         .head-label {
             display: flex;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .product_spec_parent {

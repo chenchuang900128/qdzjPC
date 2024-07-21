@@ -3,4 +3,4 @@ Disallow:
 User-agent: *
 Disallow:
 Disallow: /bin/
-Sitemap: https://www.fastice-tech.com/sitemap.xml
+Sitemap: https://www.qdzjkf.com/sitemap.xml
