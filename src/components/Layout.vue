@@ -59,7 +59,7 @@
             <el-row :gutter="20">
                 <el-col :xs="24" :sm="18">
 					<div style="margin-left: -56%;">
-                    <p class="footer_font">邮箱：2819971691@@qq.com</p>
+                    <p class="footer_font">邮箱：2819971691@qq.com</p>
                     <div style="margin: auto;" class="footer_font">
                         互联网ICP备案：粤ICP备2024215752号
                     </div>
