@@ -329,9 +329,9 @@
             computeHeight() {
                 let screenHeight = document.body.clientWidth;
                 if (screenHeight > 415) {
-                    return '550px';
+                    return '36vw';
                 } else {
-                    return '250px';
+                    return '36vw';
                 }
             },
             computeArrowImg() {
@@ -354,7 +354,7 @@
     }
 
     .slider_img {
-        height: 44vw;
+        height: 36vw;
         width: 100vw;
     }
 
