@@ -42,10 +42,10 @@
                     </el-submenu>
                 </el-menu>
             </div>
-            <div v-if="seen" style="float: right; display: flex;align-items: center; height: 100%;">
+            <!-- <div v-if="seen" style="float: right; display: flex;align-items: center; height: 100%;">
                 <el-button type="text" style="margin-right: 20px;" class="header-title" @click="login">登录</el-button>
                 <el-button type="primary" class="header-title" @click="register" round>注册</el-button>
-            </div>
+            </div> -->
         </div>
         <div class="container" style="clear: both;">
             <router-view></router-view>
@@ -60,9 +60,14 @@
                 <el-col :xs="24" :sm="18">
 					<div style="margin-left: -56%;">
                     <p class="footer_font">邮箱：2819971691@qq.com</p>
-                    <div style="margin: auto;" class="footer_font">
+					
+                    <div @click="goBeiAnClick" style="margin: auto;"   class="footer_font" >
                         互联网ICP备案：粤ICP备2024215752号
                     </div>
+					<div @click="goGABeiAnClick" style="margin: 10px 0px;"   class="footer_font" >
+					    公安备案号：粤公网安备44060502003704号
+
+					</div>
                     <div style="margin: auto;margin-top: 6px;" class="footer_font">
                         ©qdzjkf.com所有
                     </div>
@@ -111,6 +116,16 @@
             };
         },
         methods: {
+			goBeiAnClick(){
+				
+				// 打开新标签
+				window.open("https://beian.miit.gov.cn/#/Integrated/index", '_blank');
+			},
+			goGABeiAnClick(){
+				
+				// 打开新标签
+				window.open("https://beian.mps.gov.cn/#/query/webSearch", '_blank');
+			},
             handleSelect(key) {
                 switch (key){
                     case '1':
