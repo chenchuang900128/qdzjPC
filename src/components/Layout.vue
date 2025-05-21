@@ -4,12 +4,12 @@
             <div class="logo_img" @click="logoClick">
                 <div style="display:flex; align-items: center; float:left; height: 65px;">
                     <div class="header-logo">
-                        <img id="header-img" src="../assets/logo1.png" alt="武汉云晨科技logo">
+                        <img id="header-img" src="../assets/logo1.png" alt="前端组件开发logo">
                     </div>
                 </div>
                 <div style="display:flex; float:left; height: 65px;">
                     <div class="header-important">
-                        <h1 class="company_name">武汉云晨科技</h1>
+                        <h1 class="company_name">前端组件开发</h1>
                         <div class="header-title company_name">qdzjkf.com</div>
                     </div>
                 </div>
