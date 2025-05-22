@@ -4,7 +4,17 @@ import 'element-ui/lib/theme-chalk/index.css';
 import router from './router'
 import Layout from './components/Layout.vue';
 
-Vue.use(ElementUI);
+// 性能优化：仅在生产环境关闭Vue开发提示
+Vue.config.productionTip = process.env.NODE_ENV === 'production';
+
+// 性能优化：根据环境使用不同的ElementUI配置
+if (process.env.NODE_ENV === 'production') {
+  // 生产环境使用按需导入或优化后的ElementUI
+  Vue.use(ElementUI, { size: 'medium' });
+} else {
+  // 开发环境完整引入
+  Vue.use(ElementUI);
+}
 
 // 添加路由守卫
 router.beforeEach((to, from, next) => {
@@ -23,11 +33,20 @@ router.beforeEach((to, from, next) => {
         metaKeywords.setAttribute('content', to.meta.keywords || '前端组件开发,武汉云晨科技,互联网整合营销,微信公众号开发,小程序开发,微商城开发,网站建设,前端框架,Vue组件');
     }
     
+    // 性能优化：预加载即将需要的组件
+    if (to.matched.length > 0) {
+      const componentToLoad = to.matched[0].components.default;
+      if (typeof componentToLoad === 'function') {
+        componentToLoad();
+      }
+    }
+    
     next();
 });
 
+// 初始化Vue实例
 new Vue({
-  el: '#app',
-  router,
-  render: h => h(Layout)
+    el: '#app',
+    router,
+    render: h => h(Layout)
 });

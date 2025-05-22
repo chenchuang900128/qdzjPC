@@ -4,12 +4,12 @@
             <div class="logo_img" @click="logoClick">
                 <div style="display:flex; align-items: center; float:left; height: 65px;">
                     <div class="header-logo">
-                        <img id="header-img" src="../assets/logo1.png" alt="前端组件开发logo">
+                        <img id="header-img" src="../assets/logo1.png" alt="武汉云晨科技logo">
                     </div>
                 </div>
                 <div style="display:flex; float:left; height: 65px;">
                     <div class="header-important">
-                        <h1 class="company_name">前端组件开发</h1>
+                        <h1 class="company_name">武汉云晨科技</h1>
                         <div class="header-title company_name">qdzjkf.com</div>
                     </div>
                 </div>
@@ -67,11 +67,11 @@
                     <el-col :xs="24" :sm="6">
                         <div style="display: flex; justify-self: right;">
                             <div>
-                                <img :src="company.qrcode" alt="微信公众号二维码" style="width: 100px;height: 100px;border: 0"/>
+                                <img :src="company.qrcode" alt="微信公众号二维码" style="width: 100px;height: 100px;border: 0" loading="lazy"/>
                                 <div class="footer_font" style="padding-left: 0px;">关注公众号</div>
                             </div>
                             <div style="margin-left: 60px;">
-                                <img :src="company.wxcode" alt="微信联系二维码" style="width: 100px;height: 100px;border: 0"/>
+                                <img :src="company.wxcode" alt="微信联系二维码" style="width: 100px;height: 100px;border: 0" loading="lazy"/>
                                 <div class="footer_font" style="padding-left: 0px;">联系我们</div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
         </footer>
         <div id="back_to_top" ref="btn" @click="backTop" style="display: none;" aria-label="返回顶部">
             <p style="font-size: 0.625em; font-weight: bold">TOP</p>
-            <img src="../assets/other/launch.png" alt="返回顶部" style="height: 45px;width: 35px" />
+            <img src="../assets/other/launch.png" alt="返回顶部" style="height: 45px;width: 35px" loading="lazy" />
         </div>
     </div>
 </template>
@@ -172,23 +172,41 @@
                         break;
                 }
             },
-            handleScroll(){
-                this.scroll = document.documentElement.scrollTop + document.body.scrollTop;
-                if(this.scroll > 600){
-                    this.$refs.btn.style.display = 'block';
-                }else{
-                    this.$refs.btn.style.display = 'none'
+            handleScroll: function() {
+                if (!this.ticking) {
+                    window.requestAnimationFrame(() => {
+                        this.scroll = document.documentElement.scrollTop || document.body.scrollTop;
+                        if(this.scroll > 600){
+                            this.$refs.btn.style.display = 'block';
+                        } else {
+                            this.$refs.btn.style.display = 'none'
+                        }
+                        this.ticking = false;
+                    });
+                    this.ticking = true;
                 }
             },
             backTop(){
-                this.timer = setInterval(() => {
-                    let osTop = document.documentElement.scrollTop || document.body.scrollTop;
-                    let ispeed = Math.floor(-osTop / 5)
-                    document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed;
-                    if (osTop === 0) {
-                        clearInterval(this.timer)
+                const startPosition = document.documentElement.scrollTop || document.body.scrollTop;
+                const startTime = performance.now();
+                const duration = 500;
+                
+                const scrollStep = (timestamp) => {
+                    const currentTime = timestamp || performance.now();
+                    const elapsed = currentTime - startTime;
+                    
+                    if (elapsed < duration) {
+                        const progress = 1 - Math.pow(1 - elapsed / duration, 2);
+                        const newPosition = startPosition - (startPosition * progress);
+                        
+                        window.scrollTo(0, newPosition);
+                        window.requestAnimationFrame(scrollStep);
+                    } else {
+                        window.scrollTo(0, 0);
                     }
-                }, 30)
+                };
+                
+                window.requestAnimationFrame(scrollStep);
             },
             menuSeen(){
                 let screenHeight = document.body.clientWidth;
@@ -200,11 +218,26 @@
             }
         },
         mounted() {
-            this.menuSeen()
-            window.addEventListener('scroll', this.handleScroll)
+            this.menuSeen();
+            
+            this.ticking = false;
+            window.addEventListener('scroll', this.handleScroll, { passive: true });
+            
+            setTimeout(() => {
+                const possibleRoutes = ['Fruit', 'Fashion'];
+                possibleRoutes.forEach(route => {
+                    const routeConfig = this.$router.options.routes.find(r => r.name === route);
+                    if (routeConfig && typeof routeConfig.component === 'function') {
+                        routeConfig.component();
+                    }
+                });
+            }, 1000);
         },
         beforeDestroy() {
-            window.removeEventListener('scroll', this.handleScroll)
+            window.removeEventListener('scroll', this.handleScroll);
+            if (this.timer) {
+                clearInterval(this.timer);
+            }
         }
     }
 </script>
@@ -221,6 +254,8 @@
         right: 30px;
         cursor: pointer;
         z-index: 1000;
+        transform: translateZ(0);
+        will-change: transform;
     }
     .header-title{
         font-size: 1em;
@@ -243,6 +278,8 @@
         margin: auto;
         width: 90%;
         height: 65px;
+        transform: translateZ(0);
+        will-change: transform;
     }
     .footer {
         margin-top: 40px;
@@ -297,5 +334,9 @@
     }
     a:active{
         text-decoration:none;
+    }
+    
+    .container {
+        contain: content;
     }
 </style>
